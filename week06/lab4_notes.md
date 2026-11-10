@@ -1,0 +1,3 @@
+# Error code 1451: Cannot delete or update a parent row: A foreign key constraint fails.
+
+- it occuredI attempted to delete the department. MySQL refused because a student was still referencing that department through a foreign key in the Student table. I resolved the issue by first updating the student's dept_id to the Software Engineering department and then deleting the original department. Alternatively, I could have deleted the student record first before deleting the department.
