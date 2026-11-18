@@ -153,10 +153,19 @@ WHERE matric_no = '20239999';
 DELETE FROM Department WHERE dept_name = 'Library and Information Science';
 SELECT * FROM Department;
 
-
+use sen307_vug_sen_24_11472;
 SELECT 'Departments' AS tbl, COUNT(*) AS total FROM Department
 UNION ALL SELECT 'Lecturers', COUNT(*) FROM Lecturer
 UNION ALL SELECT 'Students', COUNT(*) FROM Student
 UNION ALL SELECT 'Courses', COUNT(*) FROM Course
 UNION ALL SELECT 'Enrolments', COUNT(*) FROM Enrolment
 UNION ALL SELECT 'Allocations', COUNT(*) FROM CourseAllocation;
+
+-- Task 3 (worked example): every student and their courses,
+-- including students with no enrolments
+SELECT s.full_name, c.course_title
+FROM Student s
+LEFT JOIN Enrolment e ON s.student_id = e.student_id
+LEFT JOIN Course c ON e.course_id = c.course_id
+ORDER BY s.full_name;
+
